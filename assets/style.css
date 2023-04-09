@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* SECTION: Styling variables */
+:root {
+  --rose: #b76e79;
+  --grey: #dcd2dc;
+  --dkblue: #392f58;
+  --eggshell: #fffff0;
+  --bluegrey: #8e9aaf;
+  --ltpink: #f2c1c5;
+  --black: #000;
+  --ruluko: "Ruluko", sans-serif;
+  --poppins: "Poppins", Verdana, sans-serif;
+  --explora: "Explora", cursive;
+  --cookie: "Cookie", Georgia, cursive;
+  --bebasNeue: "Bebas Neue", cursive;
+  --badScript: "Bad Script", cursive;
+  --phuda: "Phudu", Impact, cursive;
+}
+
+body {
+  font-family: var(--poppins);
+  background-color: var(--grey);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* SECTION: Header */
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+h1 {
+  font-size: 60px;
+  align-self: center;
+  font-family: var(--ruluko);
+  margin-bottom: 15px;
+  color: var(--dkblue);
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+
+  padding-left: 10px;
+  padding-right: 10px;
+  gap: 50px;
+}
+
+/* FIX: how to get this to be centered vertically*/
+.timer {
+  vertical-align: middle;
+  text-align: center;
+}
+
+button {
+  background: radial-gradient(
+    circle,
+    rgb(245, 207, 215) 0%,
+    rgba(143, 80, 96, 0.954) 100%
+  );
+  border-radius: 8px;
+  color: var(--dkblue);
+  cursor: pointer;
+  /* font-size: 2em; */
+  letter-spacing: 0.21px;
+  line-height: 16px;
+  max-width: 255px;
+  padding: 20px 52px;
+  text-align: center;
+  transition-duration: 0.15s;
+  transition-property: background-color;
+  transition-timing-function: linear;
+  margin-top: 0.6em;
+}
+
+/* SECTION: Main */
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.answer-buttons {
+  display: flex;
+  flex-direction: column;
+}
+.hidden {
+  display: none;
+}
