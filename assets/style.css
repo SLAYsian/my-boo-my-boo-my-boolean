@@ -37,14 +37,23 @@ header {
   flex-direction: column;
   justify-content: center;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 h1 {
-  font-size: 60px;
+  font-size: 55px;
   align-self: center;
+  letter-spacing: 0.35em;
   font-family: var(--ruluko);
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   color: var(--dkblue);
+  padding-left: 0.35em;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 3px solid var(--eggshell);
+  border-radius: 8px;
+  box-shadow: rgba(60, 64, 67, 2) 0 1px 2px 0,
+    rgba(60, 64, 67, 0.15) 0 2px 4px 3px;
 }
 
 nav {
@@ -52,14 +61,44 @@ nav {
   flex-direction: row;
   justify-content: space-between;
   text-align: center;
-
-  padding-left: 10px;
-  padding-right: 10px;
-  gap: 50px;
+  gap: 100px;
+  font-weight: bolder;
+  margin-bottom: 20px;
+}
+nav button {
+  color: var(--eggshell);
+  font-size: 20px;
 }
 
-/* FIX: how to get this to be centered vertically*/
+/* FIX:  text shadow*/
 .timer {
+  font-size: 30px;
+  font-weight: bolder;
+  color: var(--rose);
+  text-shadow: var(--rose);
+  font-family: var(--phuda);
+  vertical-align: middle;
+  text-align: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+/* .time-left {
+  font-size: 30px;
+  font-weight: bold;
+  color: var(--eggshell);
+  text-shadow: var(--rose);
+  font-family: var(--phuda);
+  vertical-align: middle;
+  text-align: center;
+  margin-bottom: 15px;
+} */
+
+.points {
+  font-size: 30px;
+  font-weight: bold;
+  color: var(--eggshell);
+  font-family: var(--phuda);
   vertical-align: middle;
   text-align: center;
 }
@@ -73,16 +112,17 @@ button {
   border-radius: 8px;
   color: var(--dkblue);
   cursor: pointer;
+  padding: 5px 10px;
   /* font-size: 2em; */
-  letter-spacing: 0.21px;
+  /* letter-spacing: 0.21px;
   line-height: 16px;
   max-width: 255px;
-  padding: 20px 52px;
+
   text-align: center;
   transition-duration: 0.15s;
   transition-property: background-color;
   transition-timing-function: linear;
-  margin-top: 0.6em;
+  /* margin-top: 0.6em; */
 }
 
 /* SECTION: Main */
@@ -92,11 +132,68 @@ main {
   justify-content: flex-start;
   align-items: center;
 }
-
-.answer-buttons {
+.card {
+  background: radial-gradient(
+    circle,
+    var(--eggshell) 0%,
+    rgba(187, 124, 33, 0.604079131652661) 100%
+  );
+  border: 1px solid #eceff1;
+  border-radius: 8px;
+  box-shadow: rgba(60, 64, 67, 2) 0 1px 2px 0,
+    rgba(60, 64, 67, 0.15) 0 2px 4px 3px;
+  margin-bottom: 25px;
+  padding: 20px;
+  color: var(--dkblue);
   display: flex;
   flex-direction: column;
 }
+
+h3 {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+ul {
+  line-height: 30px;
+  font-size: 20px;
+  list-style: none;
+}
+
+.question {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.choice {
+  background: radial-gradient(
+    circle,
+    var(--eggshell) 0%,
+    rgba(218, 160, 175, 0.539) 100%
+  );
+  border-radius: 8px;
+  color: var(--dkblue);
+  font-size: 1.25em;
+  letter-spacing: 0.21px;
+  line-height: 16px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  text-align: start;
+  font-weight: bold;
+}
+
+.incorrect-correct {
+  text-align: center;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: var(--dkblue);
+}
+
 .hidden {
   display: none;
 }

@@ -25,31 +25,43 @@
       <!-- NOTES: Start button || hide when playing -->
       <nav class="nav">
         <button class="high-score-link">View High Scores</button>
-        <div class="timer">
-          <div class="timer-title">Time Remaining:</div>
-          <div class="time-left"></div>
-          <p class="score">0</p>
-        </div>
         <button class="start-button">Start</button>
-     
       </nav>
+      <div class="timer">
+        <div class="timer-title">Time Remaining (seconds):</div>
+        <div class="time-left">90</div>
+      </div>
+        <div class="points">
+        <p class="points-title">POINTS:</p>
+        <div class="points-current"></div>
+      </div>
+
+   
     </header>
     <!-- SECTION: MAIN Title || Paragraph || Buttons -->
     <main>
       <section class="questions-section">
         <!-- NOTES:  Question-->
-        <h3 class="question q1 q2 q3 q4 q5"></h3>
+        <div class="card">
+        <h3 class="card-title">Take the JavaScript Quiz!</h3>
         <!-- NOTES: Quiz directions || Hide during questions -->
-        <p class="directions"></p>
+        <h2 class="question q1 q2 q3 q4 q5"></h2>
+        <ul class="directions">
+          <li>You will have 90 seconds to complete</li>
+          <li>You will get 25 points for each correct answer</li>
+          <li>You will lose 10 points for each incorect answer</li>
+          <li>You will lose 10 seconds off the timer for each incorrect answer</li>
+        </ul>
         <!-- NOTES: Muliple Choice Questions -->
         <div class="answer-buttons a1 a2 a3 a4 a5"></div>
-          <button class="answer-0"></button>
-          <button class="answer-1"></button>
-          <button class="answer-2"></button>
-          <button class="answer-3"></button>
+          <button class="hidden choice choice-0"></button>
+          <button class="hidden choice choice-1"></button>
+          <button class="hidden choice choice-2"></button>
+          <button class="hidden choice choice-3"></button>
         </div>
+      </div>
         <!-- NOTES: Correct or incorrect || hide until after answer click-->
-        <p class="incorrect correct"></p>
+        <p class="incorrect-correct hidden"></p>
       </section>
     </main>
     <script src="./assets/script.js"></script>
