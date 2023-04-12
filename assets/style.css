@@ -146,6 +146,8 @@ main {
   padding: 20px;
   color: var(--dkblue);
   display: flex;
+  flex-wrap: wrap;
+  /* flex-basis: 250px; */
   flex-direction: column;
 }
 
@@ -165,7 +167,9 @@ ul {
   text-align: center;
   font-size: 30px;
   margin-bottom: 20px;
-  text-transform: uppercase;
+  font-weight: bolder;
+  flex-direction: wrap;
+  /* text-transform: uppercase; */
 }
 
 .choice {

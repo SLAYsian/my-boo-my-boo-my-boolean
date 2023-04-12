@@ -1,5 +1,4 @@
 "use strict";
-// test
 
 // // SECTION: ARRAY WITH QUESTIONS & ANSWERS
 let questionsArray = [
@@ -40,8 +39,8 @@ let questionsArray = [
   },
   {
     question:
-      "In the array: var numbers = [1, 2, 3, 4]; what is the index of the number 3?",
-    correctAnswer: 2,
+      "In the array: let numbersArray = [1, 2, 3, 4]; what is the index of the number 3?",
+    correctAnswer: 1,
     answers: ["A. 1", "B. 2", "C. 3", "D. 4"],
   },
 ];
@@ -68,11 +67,12 @@ let incorrectOrCorrect = document.querySelector(".incorrect-correct");
 let highScores = document.querySelector(".high-score-link");
 
 // // SECTION: INITIAL PAGE GAME STATUS
-// NOTES: Create function for initialization of game
+// NOTES: Create function for initialization of game?
 let currentQuestionIndex = 0;
 let points = 0;
 pointsCurrent.textContent = 0;
-// timeLeft.textContent = 90;
+let timeRemaining = 60;
+timeLeft.textContent = timeRemaining;
 // let init = function () {
 //   pointsCurrent.textContent = 0;
 //   directions.classList.remove("hidden");
@@ -81,10 +81,27 @@ pointsCurrent.textContent = 0;
 // };
 // init();
 
-// // SECTION: QUESTIONS
-// NOTES: question function. for loop
+// // SECTION: TIMER
+let timeLeftText = function () {
+  timeLeft.textContent = timeRemaining;
+};
 
-function questionFunction() {
+const startTimer = function () {
+  let timerID = setInterval(function () {
+    timeRemaining--;
+    timeLeftText();
+
+    if (timeRemaining === 0) {
+      clearInterval(timerID);
+      endQuiz();
+    }
+  }, 1000);
+};
+
+// // SECTION: QUESTIONS
+// NOTES: question function -> for loop
+
+const questionFunction = function () {
   if (currentQuestionIndex >= questionsArray.length) {
     return;
   }
@@ -94,24 +111,27 @@ function questionFunction() {
   for (let i = 0; i < choiceBtns.length; i++) {
     choiceBtns[i].textContent = currentQuestion.answers[i];
   }
-}
+};
 // // SECTION: CLICK ANSWER 1) Correct 2) Incorrect
-function handleAnswerClick(index) {
-  let correctIndex = questionsArray[currentQuestionIndex].correctAnswer;
+const handleAnswerClick = function (index) {
+  let correctAnswer = questionsArray[currentQuestionIndex].correctAnswer;
   incorrectOrCorrect.classList.remove("hidden");
-  if (index === correctIndex) {
-    points += 25;
+  if (index === correctAnswer) {
+    points += 20;
     incorrectOrCorrect.textContent = "🎉 Correct!";
   } else {
     points -= 10;
-    incorrectOrCorrect.textContent = "❌ Incorrect!";
+    timeRemaining -= 10;
+    timeLeftText();
+    incorrectOrCorrect.textContent =
+      "❌ Incorrect, 10 seconds removed from your time!";
   }
 
   pointsCurrent.textContent = points;
   currentQuestionIndex++;
 
   questionFunction();
-}
+};
 
 // NOTES: event handler for each answer click
 
@@ -122,6 +142,7 @@ choiceBtns.forEach((btn, index) => {
 // // SECTION: START
 // TODO: 1) click ||
 startBtn.addEventListener("click", function () {
+  startTimer();
   directions.classList.add("hidden");
   cardTitle.classList.add("hidden");
   choiceBtns.forEach((btn) => btn.classList.remove("hidden"));
@@ -131,8 +152,12 @@ startBtn.addEventListener("click", function () {
   questionFunction();
 });
 
-// // SECTION: TIMER
-
 // // SECTION: SAVE HIGH SCORE
+const endQuiz = function () {
+  clearInterval(timerID);
+  questionEl.textContent = "Quiz finished! How did you do?";
+  choiceBtns.forEach((btn) => btn.classList.add("hidden"));
+  incorrectOrCorrect.classList.add("hidden");
+};
 
 // // SECTION: NEW GAME
