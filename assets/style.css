@@ -125,6 +125,26 @@ button {
   /* margin-top: 0.6em; */
 }
 
+.high-scores-list {
+  font-size: 1.5em;
+  background: radial-gradient(
+    circle,
+    var(--eggshell) 0%,
+    rgba(187, 124, 33, 0.604079131652661) 100%
+  );
+  border: 1px solid #eceff1;
+  border-radius: 8px;
+  box-shadow: rgba(60, 64, 67, 2) 0 1px 2px 0,
+    rgba(60, 64, 67, 0.15) 0 2px 4px 3px;
+  margin-bottom: 25px;
+  padding: 20px;
+  color: var(--dkblue);
+  display: flex;
+  flex-wrap: wrap;
+  /* flex-basis: 250px; */
+  flex-direction: column;
+}
+
 /* SECTION: Main */
 main {
   display: flex;

@@ -174,17 +174,6 @@ if (points > lowestHighScore) {
   highScoreMessage.textContent = "";
 }
 
-// function showHighScores() {
-//   if (highScoresList) {
-//     let highScores = localStorage.getItem("highScores") || "";
-//     highScoresList.innerHTML = highScores;
-//   }
-
-// document.addEventListener("DOMContentLoaded", function () {
-//   showHighScores();
-// });
-// }
-
 // // SECTION: NEW GAME
 
 const init = function () {
