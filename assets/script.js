@@ -165,6 +165,9 @@ const endQuiz = function () {
     highScores += `${initials}: ${points}<br>`;
     localStorage.setItem("highScores", highScores);
     endQuizSection.classList.add("hidden");
+    questionEl.classList.add("hidden");
+    init();
+
     // highScoresLink.innerHTML = showHighScores();
   });
 };
