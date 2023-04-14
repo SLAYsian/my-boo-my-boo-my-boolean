@@ -60,7 +60,7 @@ let finalScoreEl = document.querySelector(".final-score");
 let highScoreMessage = document.querySelector(".high-score-message");
 let initialsInput = document.getElementById("initials");
 let saveScoreBtn = document.querySelector(".save-score-btn");
-let newGameBtn = document.querySelector("new-game-btn");
+let newGameBtn = document.querySelector(".new-game-btn");
 let highScoresLink = document.querySelector(".high-score-link");
 let highScoresList = document.querySelector(".high-scores-list");
 
@@ -120,7 +120,11 @@ const handleAnswerClick = function (index) {
   pointsCurrent.textContent = points;
   currentQuestionIndex++;
 
-  questionFunction();
+  if (currentQuestionIndex < questionsArray.length) {
+    questionFunction();
+  } else {
+    endQuiz();
+  }
 };
 
 // NOTES: event handler for each answer click
@@ -182,6 +186,8 @@ const init = function () {
   cardTitle.classList.remove("hidden");
   points = 0;
   currentQuestionIndex = 0;
+  timeRemaining = 60;
+  timeLeft.textContent = timeRemaining;
   pointsCurrent.textContent = points;
 };
 newGameBtn.addEventListener("click", init);

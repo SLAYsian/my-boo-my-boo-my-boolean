@@ -221,3 +221,45 @@ ul {
 .hidden {
   display: none;
 }
+
+/* Media Queries */
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 30px;
+  }
+
+  nav {
+    gap: 15px;
+    flex-direction: column;
+  }
+
+  nav button {
+    font-size: 16px;
+  }
+
+  .timer,
+  .points {
+    font-size: 25px;
+  }
+
+  button {
+    font-size: 1.5em;
+  }
+
+  h3 {
+    font-size: 25px;
+  }
+
+  ul {
+    font-size: 18px;
+  }
+
+  .question {
+    font-size: 25px;
+  }
+
+  .choice {
+    font-size: 1.15em;
+  }
+}
