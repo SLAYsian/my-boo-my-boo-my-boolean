@@ -52,34 +52,24 @@ let pointsCurrent = document.querySelector(".points-current");
 let cardTitle = document.querySelector(".card-title");
 let directions = document.querySelector(".directions");
 let questionEl = document.querySelector(".question");
-// let question1 = document.querySelector(".q1");
-// let question2 = document.querySelector(".q2");
-// let question3 = document.querySelector(".q3");
-// let question4 = document.querySelector(".q4");
-// let question5 = document.querySelector(".q5");
 let answerBtns = document.querySelector(".answer-buttons");
 let choiceBtns = document.querySelectorAll(".choice");
-// let choice0 = document.querySelector(".choice-0");
-// let choice1 = document.querySelector(".choice-1");
-// let choice2 = document.querySelector(".choice-2");
-// let choice3 = document.querySelector(".choice-3");
 let incorrectOrCorrect = document.querySelector(".incorrect-correct");
-let highScores = document.querySelector(".high-score-link");
+let endQuizSection = document.querySelector(".end-quiz");
+let finalScoreEl = document.querySelector(".final-score");
+let highScoreMessage = document.querySelector(".high-score-message");
+let initialsInput = document.getElementById("initials");
+let saveScoreBtn = document.querySelector(".save-score-btn");
+let newGameBtn = document.querySelector("new-game-btn");
+let highScoresLink = document.querySelector(".high-score-link");
+let highScoresList = document.querySelector(".high-scores-list");
 
-// // SECTION: INITIAL PAGE GAME STATUS
-// NOTES: Create function for initialization of game?
 let currentQuestionIndex = 0;
 let points = 0;
 pointsCurrent.textContent = 0;
 let timeRemaining = 60;
 timeLeft.textContent = timeRemaining;
-// let init = function () {
-//   pointsCurrent.textContent = 0;
-//   directions.classList.remove("hidden");
-//   answerButtons.classList.add("hidden");
-//   h3.classList.add("hidden");
-// };
-// init();
+let timerID;
 
 // // SECTION: TIMER
 let timeLeftText = function () {
@@ -87,7 +77,7 @@ let timeLeftText = function () {
 };
 
 const startTimer = function () {
-  let timerID = setInterval(function () {
+  timerID = setInterval(function () {
     timeRemaining--;
     timeLeftText();
 
@@ -103,7 +93,7 @@ const startTimer = function () {
 
 const questionFunction = function () {
   if (currentQuestionIndex >= questionsArray.length) {
-    return;
+    endQuiz();
   }
   let currentQuestion = questionsArray[currentQuestionIndex];
   questionEl.textContent = currentQuestion.question;
@@ -152,12 +142,57 @@ startBtn.addEventListener("click", function () {
   questionFunction();
 });
 
-// // SECTION: SAVE HIGH SCORE
+// // SECTION: END QUIZ
+
+let highScoresArray = [];
 const endQuiz = function () {
   clearInterval(timerID);
   questionEl.textContent = "Quiz finished! How did you do?";
   choiceBtns.forEach((btn) => btn.classList.add("hidden"));
   incorrectOrCorrect.classList.add("hidden");
+
+  endQuizSection.classList.remove("hidden");
+
+  finalScoreEl.textContent = points;
+  saveScoreBtn.addEventListener("click", function () {
+    let initials = initialsInput.value;
+    let highScores = localStorage.getItem("highScores") || "";
+
+    highScores += `${initials}: ${points}<br>`;
+    localStorage.setItem("highScores", highScores);
+    endQuizSection.classList.add("hidden");
+    // highScoresLink.innerHTML = showHighScores();
+  });
 };
 
+// // SECTION: HIGH SCORE
+let lowestHighScore = highScoresArray[highScoresArray.length - 1]?.score || 0;
+if (points > lowestHighScore) {
+  highScoreMessage.textContent =
+    "🎉 Congratulations! You got a new high score!";
+} else {
+  highScoreMessage.textContent = "";
+}
+
+// function showHighScores() {
+//   if (highScoresList) {
+//     let highScores = localStorage.getItem("highScores") || "";
+//     highScoresList.innerHTML = highScores;
+//   }
+
+// document.addEventListener("DOMContentLoaded", function () {
+//   showHighScores();
+// });
+// }
+
 // // SECTION: NEW GAME
+
+const init = function () {
+  endQuizSection.classList.add("hidden");
+  directions.classList.remove("hidden");
+  cardTitle.classList.remove("hidden");
+  points = 0;
+  currentQuestionIndex = 0;
+  pointsCurrent.textContent = points;
+};
+newGameBtn.addEventListener("click", init);
