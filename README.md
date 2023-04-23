@@ -20,7 +20,7 @@ I want to be able to test my JavaScript knowledge by taking a timed quiz and sav
 - Once you complete or run out of time, you will be able to store your score in the high scores link
 - Click the link to see all the high scores
 
-[Live Deployment](https://slayonce.github.io/my-boo-my-boo-my-boolean/)
+[Live Deployment](https://slaysian.github.io/my-boo-my-boo-my-boolean/)
 
 ### Screenshots:
 ![1](https://user-images.githubusercontent.com/127693250/231938093-952204b8-d115-41cc-908a-f0a18df78d09.png)
